@@ -47,6 +47,9 @@ namespace Assign5.Migrations
                     b.Property<string>("MiddleInt")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NumPages")
+                        .HasColumnType("int");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 

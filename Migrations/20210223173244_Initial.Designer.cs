@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assign5.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    [Migration("20210217222528_Initial")]
+    [Migration("20210223173244_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,9 @@ namespace Assign5.Migrations
 
                     b.Property<string>("MiddleInt")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumPages")
+                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");

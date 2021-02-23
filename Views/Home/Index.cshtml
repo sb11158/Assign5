@@ -1,17 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IQueryable<Project>
-<header class="text-center">
-    <h1>Book Suggestions</h1>
+@model ProjectListViewModel
+<header>
     <link href="~/css/Styles.css" rel="stylesheet" />
 </header>
-<div>
-    <div class="text-center">
-        <img src="~/book2.png" />
+<!--add bootstrap to top header-->
+<div class="bg-success p-2 text-white">
+    <h1 class="navbar-brand ml-2">BOOK SUGGESTIONS</h1>
+</div>
+<br />
+<!--place title and img in 2 columns side by side-->
+<div class="text-center row m-1 p-1">
+    <div class="col-4">
+        <h2>Here is a list of the Best Books Known to Man</h2>
     </div>
-    
-    <h2>Here is a list of Professor Hilton's Favorite Books</h2>
+    <div class="text-center col-8">
+        <img src="~/book2.png" width="200" />
+    </div>
+</div>
+<div>
+
+
     <br />
     <!--Table that holds the seed data-->
     <table id="books">
@@ -25,12 +35,13 @@
                 <th>ISBN Number</th>
                 <th>Classification</th>
                 <th>Category</th>
+                <th>Number of Pages</th>
                 <th>Price</th>
             </tr>
         </thead>
         <!--Display data-->
         <tbody>
-            @foreach (var x in Model)
+            @foreach (var x in Model.Projects)
             {
                 <tr>
                     <td>@x.Title</td>
@@ -41,11 +52,18 @@
                     <td>@x.ISBN</td>
                     <td>@x.Classification</td>
                     <td>@x.Category</td>
+                    <td>@x.NumPages</td>
                     <td>$@x.Price</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<!--create the page links and make them pretty-->
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary"
+     class="btn-group pull-right m-1"></div>
 
 
