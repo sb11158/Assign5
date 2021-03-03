@@ -8,8 +8,33 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <!--add bootstrap to top header-->
+    <div class="bg-success p-2 text-white">
+        <h1 class="navbar-brand ml-2">BOOK SUGGESTIONS</h1>
     </div>
+    <br />
+    <!--place title and img in 2 columns side by side-->
+    <div class="text-center row m-1 p-1">
+        <div class="col-4">
+            <h2>Here is a list of the Best Books Known to Man</h2>
+            <br />
+            <br />
+            <br />
+            <img src="~/book2.png" width="200" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h4>Select a Category -></h4>
+        </div>
+        <div class="text-center col-8">
+            <vc:navigation-menu />
+        </div>
+    </div>
+    
+        
+        <div>
+            @RenderBody()
+        </div>
 </body>
 </html>

@@ -21,21 +21,24 @@ namespace Assign5.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new ProjectListViewModel
             {
                 Projects = _repository.Projects
-                .OrderBy(p => p.BookId)
-                .Skip((page - 1) * PageSize)
-                .Take(PageSize)
+                    .Where(p => category == null || p.Category == category)
+                    .OrderBy(p => p.BookId)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize)
                 ,
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Projects.Count()
-                }
+                    TotalNumItems = category == null ? _repository.Projects.Count() :
+                        _repository.Projects.Where(x => x.Category == category).Count()
+                },
+                CurrentCategory = category 
         });
 
                 

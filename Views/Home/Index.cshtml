@@ -5,20 +5,6 @@
 <header>
     <link href="~/css/Styles.css" rel="stylesheet" />
 </header>
-<!--add bootstrap to top header-->
-<div class="bg-success p-2 text-white">
-    <h1 class="navbar-brand ml-2">BOOK SUGGESTIONS</h1>
-</div>
-<br />
-<!--place title and img in 2 columns side by side-->
-<div class="text-center row m-1 p-1">
-    <div class="col-4">
-        <h2>Here is a list of the Best Books Known to Man</h2>
-    </div>
-    <div class="text-center col-8">
-        <img src="~/book2.png" width="200" />
-    </div>
-</div>
 <div>
 
 
@@ -53,7 +39,7 @@
                     <td>@x.Classification</td>
                     <td>@x.Category</td>
                     <td>@x.NumPages</td>
-                    <td>$@x.Price</td>
+                    <td>@x.Price</td>
                 </tr>
             }
         </tbody>
@@ -64,6 +50,7 @@
      page-class="btn"
      page-class-normal="btn-outline-dark"
      page-class-selected="btn-primary"
+     page-url-category ="@Model.CurrentCategory"
      class="btn-group pull-right m-1"></div>
 
 

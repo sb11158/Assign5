@@ -9,6 +9,6 @@ namespace Assign5.Models.ViewModels
     {
         public IEnumerable<Project> Projects { get; set; }
         public PagingInfo PagingInfo { get; set; }
-
+        public string CurrentCategory { get; set; }
     }
 }
