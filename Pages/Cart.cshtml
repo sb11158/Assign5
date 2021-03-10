@@ -21,7 +21,7 @@
             <tr>
                 <td>@line.Project.Title</td>
                 <td class="text-right">@line.Quantity</td>
-                <td class="text-right">@line.Project.Price</td>
+                <td class="text-right">$@line.Project.Price</td>
                 <td class="text-right">@((line.Quantity * line.Project.Price).ToString("c"))</td>
                 <td class="text-right">
                     <form asp-page-handler="Remove" method="post">

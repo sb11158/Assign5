@@ -23,17 +23,17 @@ namespace Assign5.Models
         public override void AddItem(Project proj, int quantity)
         {
             base.AddItem(proj, quantity);
-            Session.SetJson("Cart", this);
+            Session.SetJson("cart", this);
         }
         public override void RemoveLine(Project proj)
         {
             base.RemoveLine(proj);
-            Session.SetJson("Cart", this);
+            Session.SetJson("cart", this);
         }
         public override void Clear()
         {
             base.Clear();
-            Session.Remove("Cart");
+            Session.Remove("cart");
         }
     }
 }

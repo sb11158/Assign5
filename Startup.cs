@@ -66,11 +66,11 @@ namespace Assign5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("catpage",
-                    "{category}/{page:int}",
+                    "{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
 
-                endpoints.MapControllerRoute("page",
-                    "Books/{page:int}",
+                endpoints.MapControllerRoute("pageNum",
+                    "Books/{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("category",
@@ -78,7 +78,7 @@ namespace Assign5
                     new { Controller = "Home", action = "Index", page = 1 });
 
                 endpoints.MapControllerRoute("pagination",
-                   "Books/P{page}",
+                   "Books/P{pageNum}",
                    new {Controller = "Home", action = "Index"});
                 
                 endpoints.MapDefaultControllerRoute();
