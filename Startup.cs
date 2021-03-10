@@ -1,6 +1,7 @@
 using Assign5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,9 +29,16 @@ namespace Assign5
             services.AddControllersWithViews();
             services.AddDbContext<ProjectDBContext>(options =>
            {
-               options.UseSqlServer(Configuration["ConnectionStrings:Assignment5Connection"]);
+               options.UseSqlite(Configuration["ConnectionStrings:Assignment5Connection"]);
            });
             services.AddScoped<IProjectRepository, EFProjectRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +57,8 @@ namespace Assign5
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -60,19 +70,20 @@ namespace Assign5
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("page",
-                    "Projects/{page:int}",
+                    "Books/{page:int}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("category",
                     "{category}",
                     new { Controller = "Home", action = "Index", page = 1 });
 
-                endpoints.MapControllerRoute(
-                   "pagination",
+                endpoints.MapControllerRoute("pagination",
                    "Books/P{page}",
                    new {Controller = "Home", action = "Index"});
                 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
             SeedData.EnsurePopulated(app);
         }

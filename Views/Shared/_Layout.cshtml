@@ -6,13 +6,20 @@
     <title>@ViewData["Title"] - Assign5</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/all.css" rel="stylesheet" />
 </head>
 <body>
-    <!--add bootstrap to top header-->
-    <div class="bg-success p-2 text-white">
-        <h1 class="navbar-brand ml-2">BOOK SUGGESTIONS</h1>
+    <!--add nav bar with cart widget-->
+    <div class="bg-success text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">BEST BOOK STORE</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
     <!--place title and img in 2 columns side by side-->
     <div class="text-center row m-1 p-1">
         <div class="col-4">
@@ -31,10 +38,10 @@
             <vc:navigation-menu />
         </div>
     </div>
-    
-        
-        <div>
-            @RenderBody()
-        </div>
+
+
+    <div>
+        @RenderBody()
+    </div>
 </body>
 </html>
